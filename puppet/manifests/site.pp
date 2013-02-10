@@ -56,6 +56,14 @@ node 'vm-licpro' {
     require  => Class['bazinga::roles::mysql'],
   }
 
+  mysql::db { 'project':
+    user     => 'project',
+    password => 'project123',
+    host     => 'localhost',
+    grant    => [ 'all' ],
+    require  => Class['bazinga::roles::mysql'],
+  }
+
   package { 'nano':
     ensure => absent
   }
